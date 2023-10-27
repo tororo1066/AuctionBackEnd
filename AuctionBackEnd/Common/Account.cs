@@ -36,6 +36,11 @@ namespace AuctionBackEnd.Common
             {
                 return new BadRequestObjectResult("Invalid LinkId");
             }
+
+            if (data.Pass != null)
+            {
+                return new BadRequestObjectResult("Already Registered");
+            }
                 
             var (pass, salt) = Utils.GetHashWithSalt(signUpUser.Pass, null);
             data.Pass = pass;
